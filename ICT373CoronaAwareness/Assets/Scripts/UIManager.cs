@@ -1,0 +1,61 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+public class UIManager : MonoBehaviour
+{
+    public TMP_Text covidcases;
+    public TMP_Text deathcount;
+    public TMP_Text covidchance;
+
+    public int covidCases;
+    public int deathCount;
+    public double covidChance;
+
+    public GameObject Canvas1;
+
+    void Awake()
+    {
+        covidcases.text = covidCases.ToString();
+        deathcount.text = deathCount.ToString();
+        covidchance.text = covidChance.ToString();
+    }
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        covidcases.text = covidCases.ToString();
+        deathcount.text = deathCount.ToString();
+        covidchance.text = covidChance.ToString();
+    }
+    public void ClickedAButton()
+    {
+        Canvas1.SetActive(false);
+        Time.timeScale = 1f;
+
+    }
+
+    public void PositiveSelection()
+    {
+        covidCases = covidCases + 1;
+        deathCount = deathCount + 0;
+        covidChance = covidChance + 0;
+        covidcases.text = covidCases.ToString();
+        deathcount.text = deathCount.ToString();
+        covidchance.text = covidChance.ToString();
+    }
+    public void NegativeSelection()
+    {
+        covidCases = covidCases + 30;
+        deathCount = deathCount + 3;
+        covidChance = covidChance + 1;
+        covidcases.text = covidCases.ToString();
+        deathcount.text = deathCount.ToString();
+        covidchance.text = covidChance.ToString();
+    }
+}

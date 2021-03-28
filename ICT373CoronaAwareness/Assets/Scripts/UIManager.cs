@@ -15,6 +15,13 @@ public class UIManager : MonoBehaviour
     public double covidChance;
 
     public GameObject Canvas1;
+    public GameObject Canvas2;
+    public GameObject Risky;
+    public GameObject EndScreen;
+    public GameObject Safer;
+
+    public GameObject MainCamera;
+    public GameObject EndScreenCamera;
 
     void Awake()
     {
@@ -24,7 +31,9 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
-        
+        MainCamera.SetActive(true);
+        EndScreen.SetActive(false);
+        EndScreenCamera.SetActive(false);
     }
 
     void Update()
@@ -36,6 +45,8 @@ public class UIManager : MonoBehaviour
     public void ClickedAButton()
     {
         Canvas1.SetActive(false);
+        Canvas2.SetActive(false);
+        
         Time.timeScale = 1f;
 
     }
@@ -57,5 +68,38 @@ public class UIManager : MonoBehaviour
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
+    }
+
+    public void RiskyUI()
+    {
+        Risky.SetActive(false);
+    }
+
+    public void SaferUI()
+    {
+        Safer.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.CompareTag("MovementTriggerPositive"))
+        {
+            covidCases = covidCases + 1;
+            deathCount = deathCount + 0;
+            covidChance = covidChance + 1;
+        }
+
+        if (collision.CompareTag("MovementTriggerNegative"))
+        {
+            covidCases = covidCases + 30;
+            deathCount = deathCount + 3;
+            covidChance = covidChance + 1;
+        }
+
+        if (collision.CompareTag("Finish"))
+        {
+            EndScreen.SetActive(true);
+            EndScreenCamera.SetActive(true);
+        }
     }
 }

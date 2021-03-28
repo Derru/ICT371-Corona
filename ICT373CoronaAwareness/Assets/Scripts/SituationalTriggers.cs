@@ -7,6 +7,7 @@ public class SituationalTriggers : MonoBehaviour
 {
     public GameObject UISelect1;
     public GameObject Trigger1;
+    public GameObject Trigger2;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,8 @@ public class SituationalTriggers : MonoBehaviour
             UISelect1.SetActive(true);
             Trigger1.SetActive(false);
             Time.timeScale = 0f;
+
+            Trigger2.SetActive(false);
         }
     }
 }

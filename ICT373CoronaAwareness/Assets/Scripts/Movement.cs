@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(InputHandler))]
 public class Movement : MonoBehaviour
 {
     private InputHandler _input;
+   
+    public Rigidbody rb;
 
     [SerializeField]
     private bool RotateTowardMouse;
@@ -28,6 +31,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
         var targetVector = new Vector3(_input.InputVector.x, 0, _input.InputVector.y);
         var movementVector = MoveTowardTarget(targetVector);
@@ -40,7 +47,6 @@ public class Movement : MonoBehaviour
         {
             RotateFromMouseVector();
         }
-
     }
 
     private void RotateFromMouseVector()
@@ -58,13 +64,14 @@ public class Movement : MonoBehaviour
     private Vector3 MoveTowardTarget(Vector3 targetVector)
     {
         var speed = MovementSpeed * Time.deltaTime;
-        // transform.Translate(targetVector * (MovementSpeed * Time.deltaTime)); Demonstrate why this doesn't work
-        //transform.Translate(targetVector * (MovementSpeed * Time.deltaTime), Camera.gameObject.transform);
+        
 
         targetVector = Quaternion.Euler(0, Camera.gameObject.transform.rotation.eulerAngles.y, 0) * targetVector;
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
         return targetVector;
+        
+
     }
 
     private void RotateTowardMovementVector(Vector3 movementDirection)

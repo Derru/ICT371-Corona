@@ -16,7 +16,7 @@ public class InputHandler : MonoBehaviour
 
     private void Start()
     {
-        
+        audiosrc.Stop();
     }
     // Update is called once per frame
     void Update()

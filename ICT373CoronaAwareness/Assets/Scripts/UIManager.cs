@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        Abutton();
+        Bbutton();
+
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
@@ -78,6 +81,44 @@ public class UIManager : MonoBehaviour
     public void SaferUI()
     {
         Safer.SetActive(false);
+    }
+
+    public void Abutton()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            Canvas1.SetActive(false);
+            Canvas2.SetActive(false);
+            Risky.SetActive(false);
+            Safer.SetActive(false);
+            Time.timeScale = 1f;
+
+            covidCases = covidCases + 1;
+            deathCount = deathCount + 0;
+            covidChance = covidChance + 0;
+            covidcases.text = covidCases.ToString();
+            deathcount.text = deathCount.ToString();
+            covidchance.text = covidChance.ToString();
+        }
+    }
+
+    public void Bbutton()
+    {
+        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            Canvas1.SetActive(false);
+            Canvas2.SetActive(false);
+            Risky.SetActive(false);
+            Safer.SetActive(false);
+            Time.timeScale = 1f;
+
+            covidCases = covidCases + 1;
+            deathCount = deathCount + 0;
+            covidChance = covidChance + 0;
+            covidcases.text = covidCases.ToString();
+            deathcount.text = deathCount.ToString();
+            covidchance.text = covidChance.ToString();
+        }
     }
 
     private void OnTriggerEnter(Collider collision)

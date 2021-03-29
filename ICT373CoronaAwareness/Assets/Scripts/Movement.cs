@@ -9,7 +9,9 @@ using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
     private InputHandler _input;
-   
+
+    public string key;
+
     public Rigidbody rb;
 
     [SerializeField]

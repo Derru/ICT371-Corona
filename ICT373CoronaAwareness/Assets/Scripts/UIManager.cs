@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject Risky;
     public GameObject EndScreen;
     public GameObject Safer;
+    public GameObject PauseMenu;
 
     public GameObject MainCamera;
     public GameObject EndScreenCamera;
@@ -38,6 +39,12 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
+        {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
         Abutton();
         Bbutton();
 
@@ -91,6 +98,7 @@ public class UIManager : MonoBehaviour
             Canvas2.SetActive(false);
             Risky.SetActive(false);
             Safer.SetActive(false);
+            PauseMenu.SetActive(false);
             Time.timeScale = 1f;
 
             covidCases = covidCases + 1;
@@ -110,6 +118,7 @@ public class UIManager : MonoBehaviour
             Canvas2.SetActive(false);
             Risky.SetActive(false);
             Safer.SetActive(false);
+            PauseMenu.SetActive(false);
             Time.timeScale = 1f;
 
             covidCases = covidCases + 1;
@@ -142,5 +151,16 @@ public class UIManager : MonoBehaviour
             EndScreen.SetActive(true);
             EndScreenCamera.SetActive(true);
         }
+    }
+
+    public void QuittheGame()
+    {
+        Application.Quit();
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        PauseMenu.SetActive(false);
     }
 }

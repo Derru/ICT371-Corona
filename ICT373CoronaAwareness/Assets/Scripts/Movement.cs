@@ -10,8 +10,6 @@ public class Movement : MonoBehaviour
 {
     private InputHandler _input;
 
-    public string key;
-
     public Rigidbody rb;
 
     [SerializeField]
@@ -66,14 +64,11 @@ public class Movement : MonoBehaviour
     private Vector3 MoveTowardTarget(Vector3 targetVector)
     {
         var speed = MovementSpeed * Time.deltaTime;
-        
 
         targetVector = Quaternion.Euler(0, Camera.gameObject.transform.rotation.eulerAngles.y, 0) * targetVector;
         var targetPosition = transform.position + targetVector * speed;
         transform.position = targetPosition;
         return targetVector;
-        
-
     }
 
     private void RotateTowardMovementVector(Vector3 movementDirection)

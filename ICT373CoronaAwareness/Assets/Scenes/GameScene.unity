@@ -5617,7 +5617,6 @@ GameObject:
   - component: {fileID: 1027424069}
   - component: {fileID: 1027424068}
   - component: {fileID: 1027424067}
-  - component: {fileID: 1027424066}
   - component: {fileID: 1027424070}
   m_Layer: 0
   m_Name: OutsidePlane
@@ -5626,20 +5625,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1027424066
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027424065}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1027424067
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7430,7 +7415,6 @@ GameObject:
   - component: {fileID: 1268464653}
   - component: {fileID: 1268464652}
   - component: {fileID: 1268464651}
-  - component: {fileID: 1268464650}
   m_Layer: 0
   m_Name: ActualArea
   m_TagString: Untagged
@@ -7438,20 +7422,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!64 &1268464650
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268464649}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1268464651
 MeshRenderer:
   m_ObjectHideFlags: 0

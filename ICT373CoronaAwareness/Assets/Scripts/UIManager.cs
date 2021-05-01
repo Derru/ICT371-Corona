@@ -134,15 +134,15 @@ public class UIManager : MonoBehaviour
     {
         if (collision.CompareTag("MovementTriggerPositive"))
         {
-            covidCases = covidCases + 1;
+            covidCases = covidCases - 1;
             deathCount = deathCount + 0;
-            covidChance = covidChance + 1;
+            covidChance = covidChance - 1;
         }
 
         if (collision.CompareTag("MovementTriggerNegative"))
         {
-            covidCases = covidCases + 30;
-            deathCount = deathCount + 3;
+            covidCases = covidCases + 33;
+            deathCount = deathCount + 4;
             covidChance = covidChance + 1;
         }
 

@@ -6,9 +6,8 @@ using UnityEngine;
 public class SituationalTriggers : MonoBehaviour
 {
     public GameObject UISelect1;
-    public GameObject UISelect2;
-    public GameObject Trigger1;
-    public GameObject Trigger2;
+    public GameObject Waypoint;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +26,7 @@ public class SituationalTriggers : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             UISelect1.SetActive(true);
-            UISelect2.SetActive(false);
-            Trigger1.SetActive(false);
-            Time.timeScale = 0f;
-
-            Trigger2.SetActive(false);
+            Waypoint.SetActive(false);
         }
     }
 }

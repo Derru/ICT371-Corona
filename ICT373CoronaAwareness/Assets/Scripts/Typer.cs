@@ -21,10 +21,13 @@ public class Typer : MonoBehaviour
     {
         for (int i = 0; i < fullText.Length; i++)
         {
-           
-            currentText = fullText.Substring(0, i);
-            Narration.GetComponent<TextMeshProUGUI>().text = currentText;
-            yield return new WaitForSeconds(delay);
+           if(Narration != null)
+            {
+                currentText = fullText.Substring(0, i);
+                Narration.GetComponent<TextMeshProUGUI>().text = currentText;
+                yield return new WaitForSeconds(delay);
+            }
+            
         }
     }
 }

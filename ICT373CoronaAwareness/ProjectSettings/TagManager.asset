@@ -8,6 +8,7 @@ TagManager:
   - MovementTriggerPositive
   - MovementTriggerNegative
   - MovementTriggerNeutral
+  - MoveTriggerPositive2
   layers:
   - Default
   - TransparentFX

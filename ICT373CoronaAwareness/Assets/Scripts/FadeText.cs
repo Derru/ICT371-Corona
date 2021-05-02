@@ -60,6 +60,13 @@ public class FadeText : MonoBehaviour
             faceMask.gameObject.SetActive(true);
             faceMaskPickup.gameObject.SetActive(false);
         }
+        if(other.tag == "MoveTriggerPositive2")
+        {
+            fadingIn = true;
+            regionName.text = other.name;
+
+            Destroy(other.gameObject);
+        }
         if(other.tag == "MovementTriggerNeutral")
         {
             fadingIn = true;

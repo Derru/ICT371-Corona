@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FadeText : MonoBehaviour
 {
-    public Text regionName;
+    public TextMeshProUGUI regionName;
 
     public GameObject MaskTrigger;
     public GameObject DetourTrigger;

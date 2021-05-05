@@ -9,32 +9,30 @@ public class UIManager : MonoBehaviour
     public TMP_Text covidcases;
     public TMP_Text deathcount;
     public TMP_Text covidchance;
+    public TMP_Text negativechoices;
+    public TMP_Text positivechoices;
 
     public int covidCases;
     public int deathCount;
+    public int negativeChoices;
+    public int positiveChoices;
     public double covidChance;
 
-    public GameObject Canvas1;
-    public GameObject Canvas2;
-    public GameObject Risky;
-    public GameObject EndScreen;
-    public GameObject Safer;
     public GameObject PauseMenu;
-
-    public GameObject MainCamera;
-    public GameObject EndScreenCamera;
+    public GameObject Playerrr;
 
     void Awake()
     {
+        DontDestroyOnLoad(Playerrr);
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
+        negativechoices.text = negativeChoices.ToString();
+        positivechoices.text = positiveChoices.ToString();
     }
     void Start()
     {
-        MainCamera.SetActive(true);
-        EndScreen.SetActive(false);
-        EndScreenCamera.SetActive(false);
+        
     }
 
     void Update()
@@ -51,12 +49,11 @@ public class UIManager : MonoBehaviour
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
+        negativechoices.text = negativeChoices.ToString();
+        positivechoices.text = positiveChoices.ToString();
     }
     public void ClickedAButton()
     {
-        Canvas1.SetActive(false);
-        Canvas2.SetActive(false);
-        
         Time.timeScale = 1f;
 
     }
@@ -80,24 +77,11 @@ public class UIManager : MonoBehaviour
         covidchance.text = covidChance.ToString();
     }
 
-    public void RiskyUI()
-    {
-        Risky.SetActive(false);
-    }
-
-    public void SaferUI()
-    {
-        Safer.SetActive(false);
-    }
 
     public void Abutton()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button0))
         {
-            Canvas1.SetActive(false);
-            Canvas2.SetActive(false);
-            Risky.SetActive(false);
-            Safer.SetActive(false);
             PauseMenu.SetActive(false);
             Time.timeScale = 1f;
 
@@ -114,10 +98,6 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-            Canvas1.SetActive(false);
-            Canvas2.SetActive(false);
-            Risky.SetActive(false);
-            Safer.SetActive(false);
             PauseMenu.SetActive(false);
             Time.timeScale = 1f;
 
@@ -137,6 +117,15 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases - 1;
             deathCount = deathCount + 0;
             covidChance = covidChance - 1;
+            positiveChoices = positiveChoices + 1;
+        }
+
+        if (collision.CompareTag("HandSanitiser"))
+        {
+            covidCases = covidCases - 1;
+            deathCount = deathCount + 0;
+            covidChance = covidChance - 1;
+            positiveChoices = positiveChoices + 1;
         }
 
         if (collision.CompareTag("MovementTriggerNegative"))
@@ -144,12 +133,11 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases + 33;
             deathCount = deathCount + 4;
             covidChance = covidChance + 1;
+            negativeChoices = negativeChoices + 1;
         }
-
-        if (collision.CompareTag("Finish"))
+        else
         {
-            EndScreen.SetActive(true);
-            EndScreenCamera.SetActive(true);
+            positiveChoices = positiveChoices + 1;
         }
     }
 

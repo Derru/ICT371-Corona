@@ -9,6 +9,11 @@ TagManager:
   - MovementTriggerNegative
   - MovementTriggerNeutral
   - MoveTriggerPositive2
+  - HandSanitiser
+  - Spill
+  - CleanSpill
+  - GoToEnd
+  - Level2
   layers:
   - Default
   - TransparentFX

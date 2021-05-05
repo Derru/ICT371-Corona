@@ -8,10 +8,16 @@ public class FadeText2 : MonoBehaviour
 {
     public TextMeshProUGUI regionName;
 
+    public GameObject Finish;
+    public GameObject SpillMarker;
+    public GameObject FinishMarker;
     public GameObject HandSanitiser;
     public GameObject SocialDistance;
-    public GameObject StackShelf;
+    public GameObject DoneForToday;
     public GameObject SocialDistanceNegative;
+
+    public AudioSource audiosrcc;
+
     private float fadeTime;
     private bool fadingIn;
 
@@ -21,6 +27,11 @@ public class FadeText2 : MonoBehaviour
         regionName.CrossFadeAlpha(0, 0.0f, false);
         fadeTime = 0;
         fadingIn = false;
+        SpillMarker.SetActive(false);
+        FinishMarker.SetActive(false);
+        DoneForToday.SetActive(false);
+
+        Finish.SetActive(false);
     }
 
     // Update is called once per frame
@@ -67,7 +78,7 @@ public class FadeText2 : MonoBehaviour
         {
             fadingIn = true;
             regionName.text = other.name;
-
+            
             Destroy(other.gameObject);
         }
         if (other.tag == "MovementTriggerNegative")
@@ -76,6 +87,37 @@ public class FadeText2 : MonoBehaviour
             regionName.text = other.name;
 
             Destroy(other.gameObject);
+        }
+        if(other.tag == "HandSanitiser")
+        {
+            fadingIn = true;
+            regionName.text = other.name;
+            audiosrcc.Play();
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "CleanSpill")
+        {
+            fadingIn = true;
+            regionName.text = other.name;
+            SpillMarker.SetActive(true);
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "Spill")
+        {
+            fadingIn = true;
+            regionName.text = other.name;
+            SpillMarker.SetActive(false);
+            Destroy(other.gameObject);
+            DoneForToday.SetActive(true);
+        }
+        if(other.tag == "GoToEnd")
+        {
+            FinishMarker.SetActive(true);
+            Finish.SetActive(true);
+        }
+        if(other.tag == "Finish")
+        {
+            Time.timeScale = 0f;
         }
     }
 }

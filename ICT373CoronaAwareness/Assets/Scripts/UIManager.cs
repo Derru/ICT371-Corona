@@ -9,13 +9,9 @@ public class UIManager : MonoBehaviour
     public TMP_Text covidcases;
     public TMP_Text deathcount;
     public TMP_Text covidchance;
-    public TMP_Text negativechoices;
-    public TMP_Text positivechoices;
 
     public int covidCases;
     public int deathCount;
-    public int negativeChoices;
-    public int positiveChoices;
     public double covidChance;
 
     public GameObject PauseMenu;
@@ -27,8 +23,6 @@ public class UIManager : MonoBehaviour
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
-        negativechoices.text = negativeChoices.ToString();
-        positivechoices.text = positiveChoices.ToString();
     }
     void Start()
     {
@@ -37,25 +31,19 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (Input.GetKey(KeyCode.Escape))
         {
             PauseMenu.SetActive(true);
             Time.timeScale = 0f;
         }
-
-        Abutton();
-        Bbutton();
+        if (Input.GetKeyDown(KeyCode.Joystick1Button7))
+        {
+            PauseUnpause();
+        }
 
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
-        negativechoices.text = negativeChoices.ToString();
-        positivechoices.text = positiveChoices.ToString();
-    }
-    public void ClickedAButton()
-    {
-        Time.timeScale = 1f;
-
     }
 
     public void PositiveSelection()
@@ -78,38 +66,6 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void Abutton()
-    {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button0))
-        {
-            PauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-
-            covidCases = covidCases + 1;
-            deathCount = deathCount + 0;
-            covidChance = covidChance + 0;
-            covidcases.text = covidCases.ToString();
-            deathcount.text = deathCount.ToString();
-            covidchance.text = covidChance.ToString();
-        }
-    }
-
-    public void Bbutton()
-    {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button1))
-        {
-            PauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-
-            covidCases = covidCases + 1;
-            deathCount = deathCount + 0;
-            covidChance = covidChance + 0;
-            covidcases.text = covidCases.ToString();
-            deathcount.text = deathCount.ToString();
-            covidchance.text = covidChance.ToString();
-        }
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("MovementTriggerPositive"))
@@ -117,7 +73,6 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases - 1;
             deathCount = deathCount + 0;
             covidChance = covidChance - 1;
-            positiveChoices = positiveChoices + 1;
         }
 
         if (collision.CompareTag("HandSanitiser"))
@@ -125,7 +80,6 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases - 1;
             deathCount = deathCount + 0;
             covidChance = covidChance - 1;
-            positiveChoices = positiveChoices + 1;
         }
 
         if (collision.CompareTag("MovementTriggerNegative"))
@@ -133,11 +87,6 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases + 33;
             deathCount = deathCount + 4;
             covidChance = covidChance + 1;
-            negativeChoices = negativeChoices + 1;
-        }
-        else
-        {
-            positiveChoices = positiveChoices + 1;
         }
     }
 
@@ -150,5 +99,19 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         PauseMenu.SetActive(false);
+    }
+
+    public void PauseUnpause()
+    {
+        if (!PauseMenu.activeInHierarchy)
+        {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            PauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+        }
     }
 }

@@ -15,6 +15,7 @@ public class FadeText2 : MonoBehaviour
     public GameObject SocialDistance;
     public GameObject DoneForToday;
     public GameObject SocialDistanceNegative;
+    public GameObject TheSpill;
 
     public AudioSource audiosrcc;
 
@@ -109,6 +110,7 @@ public class FadeText2 : MonoBehaviour
             SpillMarker.SetActive(false);
             Destroy(other.gameObject);
             DoneForToday.SetActive(true);
+            TheSpill.SetActive(false);
         }
         if(other.tag == "GoToEnd")
         {

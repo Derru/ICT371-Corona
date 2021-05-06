@@ -9,10 +9,14 @@ public class UIManager : MonoBehaviour
     public TMP_Text covidcases;
     public TMP_Text deathcount;
     public TMP_Text covidchance;
+    public TMP_Text positivechoices;
+    public TMP_Text negativechoices;
 
     public int covidCases;
     public int deathCount;
     public double covidChance;
+    public int positiveChoices;
+    public int negativeChoices;
 
     public GameObject PauseMenu;
     public GameObject Playerrr;
@@ -23,10 +27,12 @@ public class UIManager : MonoBehaviour
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
+        
     }
     void Start()
     {
-        
+        positivechoices.text = positiveChoices.ToString();
+        negativechoices.text = negativeChoices.ToString();
     }
 
     void Update()
@@ -44,25 +50,8 @@ public class UIManager : MonoBehaviour
         covidcases.text = covidCases.ToString();
         deathcount.text = deathCount.ToString();
         covidchance.text = covidChance.ToString();
-    }
-
-    public void PositiveSelection()
-    {
-        covidCases = covidCases + 1;
-        deathCount = deathCount + 0;
-        covidChance = covidChance + 0;
-        covidcases.text = covidCases.ToString();
-        deathcount.text = deathCount.ToString();
-        covidchance.text = covidChance.ToString();
-    }
-    public void NegativeSelection()
-    {
-        covidCases = covidCases + 30;
-        deathCount = deathCount + 3;
-        covidChance = covidChance + 1;
-        covidcases.text = covidCases.ToString();
-        deathcount.text = deathCount.ToString();
-        covidchance.text = covidChance.ToString();
+        positivechoices.text = positiveChoices.ToString();
+        negativechoices.text = negativeChoices.ToString();
     }
 
 
@@ -73,6 +62,7 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases - 1;
             deathCount = deathCount + 0;
             covidChance = covidChance - 1;
+            positiveChoices = positiveChoices + 1;
         }
 
         if (collision.CompareTag("HandSanitiser"))
@@ -80,6 +70,7 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases - 1;
             deathCount = deathCount + 0;
             covidChance = covidChance - 1;
+            positiveChoices = positiveChoices + 1;
         }
 
         if (collision.CompareTag("MovementTriggerNegative"))
@@ -87,6 +78,7 @@ public class UIManager : MonoBehaviour
             covidCases = covidCases + 33;
             deathCount = deathCount + 4;
             covidChance = covidChance + 1;
+            negativeChoices = negativeChoices + 1;
         }
     }
 
